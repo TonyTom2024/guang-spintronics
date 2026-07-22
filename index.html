@@ -8,52 +8,60 @@
         /* 基础样式重置 */
         body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; list-style: none; }
         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; background-color: #fff; }
-        .zh { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 0.9em; color: #666; margin-top: 4px; display: block; }
         
+        /* 中英文切换核心逻辑：通过 body 的 class 控制隐藏哪种语言 */
+        body.show-en .lang-zh { display: none !important; }
+        body.show-zh .lang-en { display: none !important; }
+
         /* 导航栏 */
-        nav { background-color: #051024; padding: 15px 0; text-align: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        nav a { color: #fff; text-decoration: none; margin: 0 20px; font-size: 0.95em; letter-spacing: 1px; transition: color 0.3s; }
+        nav { background-color: #051024; padding: 15px 0; text-align: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; align-items: center; gap: 30px;}
+        nav a { color: #fff; text-decoration: none; font-size: 0.95em; letter-spacing: 1px; transition: color 0.3s; }
         nav a:hover { color: #a0bcdc; }
+        
+        /* 语言切换按钮样式 */
+        .lang-toggle-btn { background-color: #1a365d; color: white; border: 1px solid #a0bcdc; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-size: 0.85em; transition: 0.3s; margin-left: 20px;}
+        .lang-toggle-btn:hover { background-color: #a0bcdc; color: #051024; }
 
         /* 顶部 Hero 区域 */
         .hero { background: linear-gradient(135deg, #051024 0%, #1a365d 100%); color: #fff; text-align: center; padding: 120px 20px; }
         .hero h1 { font-family: 'Georgia', serif; font-size: 3.5em; font-weight: normal; letter-spacing: 2px; margin-bottom: 10px; }
-        .hero .subtitle { font-size: 1.2em; font-weight: 300; letter-spacing: 1px; margin-bottom: 30px; opacity: 0.9; }
-        .hero .zh-title { font-size: 1.2em; opacity: 0.7; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;}
+        .hero .subtitle { font-size: 1.2em; font-weight: 300; letter-spacing: 1px; margin-bottom: 10px; opacity: 0.9; }
 
         /* 通用区块布局 */
         .section-container { max-width: 1000px; margin: 0 auto; padding: 80px 20px; }
-        .bg-beige { background-color: #fcfbf9; } /* 模仿原网页的米色背景 */
+        .bg-beige { background-color: #fcfbf9; }
         .section-title { font-family: 'Georgia', serif; font-size: 1.8em; font-weight: normal; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; color: #111; text-align: center; }
         .section-title::after { content: ''; display: block; width: 40px; height: 2px; background-color: #1a365d; margin: 15px auto 0; }
-
-        /* 新闻区域 (News) */
-        .news-list li { border-bottom: 1px solid #eee; padding: 20px 0; display: flex; }
-        .news-date { font-weight: bold; width: 120px; color: #1a365d; flex-shrink: 0; }
-        .news-content { flex-grow: 1; }
 
         /* 研究区域 (Research) */
         .research-card { display: flex; align-items: center; margin-bottom: 60px; gap: 40px; }
         .research-card:nth-child(even) { flex-direction: row-reverse; }
         .research-text { flex: 1; }
-        .research-text h3 { font-family: 'Georgia', serif; font-size: 1.5em; margin-bottom: 10px; color: #1a365d; }
-        .research-image { flex: 1; height: 260px; background-color: #e9ecef; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #999; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .research-text h3 { font-family: 'Georgia', serif; font-size: 1.4em; margin-bottom: 15px; color: #1a365d; }
+        
+        /* 图片容器样式 */
+        .research-image { flex: 1; height: 260px; background-color: #e9ecef; border-radius: 4px; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .research-image img { width: 100%; height: 100%; object-fit: cover; }
 
         /* 成员区域 (Members) */
-        .member-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .member-card { display: flex; background: #fff; padding: 20px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; }
-        .member-photo { width: 100px; height: 120px; background-color: #e9ecef; margin-right: 20px; object-fit: cover; }
-        .member-info h3 { font-family: 'Georgia', serif; margin-bottom: 5px; color: #111; }
-        .member-info .role { font-size: 0.9em; color: #1a365d; font-weight: bold; margin-bottom: 10px; }
+        .member-grid { display: flex; justify-content: center; }
+        .member-card { display: flex; background: #fff; padding: 30px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; max-width: 600px; width: 100%; }
+        .member-photo { width: 120px; height: 150px; background-color: #e9ecef; margin-right: 30px; object-fit: cover; border-radius: 4px; overflow: hidden;}
+        .member-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .member-info h3 { font-family: 'Georgia', serif; font-size: 1.5em; margin-bottom: 5px; color: #111; }
+        .member-info .role { font-size: 1em; color: #1a365d; font-weight: bold; margin-bottom: 15px; }
 
-        /* 论文与履历区域 (Publications & Career) */
-        .pub-list li, .career-list li { margin-bottom: 25px; }
-        .pub-list .title { font-weight: bold; color: #111; }
-        .pub-list .journal { font-style: italic; color: #1a365d; }
+        /* 列表区域 (Career, Pubs, Skills) */
+        .list-row { display: flex; margin-bottom: 25px; border-bottom: 1px dashed #eee; padding-bottom: 15px;}
+        .list-row:last-child { border-bottom: none; }
+        .list-left { width: 180px; font-weight: bold; color: #1a365d; flex-shrink: 0; }
+        .list-right { flex-grow: 1; }
         
-        .career-list li { display: flex; }
-        .career-year { width: 150px; font-weight: bold; color: #1a365d; flex-shrink: 0; }
-        .career-desc { flex-grow: 1; }
+        .pub-list li { margin-bottom: 25px; line-height: 1.8; }
+        .pub-title { font-weight: bold; color: #111; }
+        .pub-journal { font-style: italic; color: #1a365d; }
+
+        .skills-tags span { display: inline-block; background: #eee; padding: 5px 12px; border-radius: 15px; font-size: 0.85em; margin: 0 8px 8px 0; color: #333; }
 
         /* 底部信息 (Footer) */
         footer { background-color: #051024; color: #fff; padding: 60px 20px; font-size: 0.9em; }
@@ -63,164 +71,355 @@
         .copyright { text-align: center; opacity: 0.5; margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
     </style>
 </head>
-<body>
+<body class="show-en"> <!-- 默认显示英文 -->
 
     <nav>
-        <a href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#research">Research</a>
-        <a href="#members">Members</a>
-        <a href="#publications">Publications</a>
+        <div class="nav-links">
+            <a href="#home" class="lang-en">Home</a>
+            <a href="#home" class="lang-zh">首页</a>
+            
+            <a href="#research" class="lang-en">Research</a>
+            <a href="#research" class="lang-zh">研究方向</a>
+            
+            <a href="#career" class="lang-en">Career</a>
+            <a href="#career" class="lang-zh">履历</a>
+            
+            <a href="#publications" class="lang-en">Publications</a>
+            <a href="#publications" class="lang-zh">发表论文</a>
+            
+            <a href="#skills" class="lang-en">Skills & Awards</a>
+            <a href="#skills" class="lang-zh">实验技能与奖项</a>
+        </div>
+        <!-- 中英文切换按钮 -->
+        <button id="lang-btn" class="lang-toggle-btn" onclick="toggleLanguage()">中文</button>
     </nav>
 
     <header id="home" class="hero">
         <h1>Yao Lab</h1>
-        <p class="subtitle">Topological Magnetism & Spintronics</p>
-        <span class="zh-title">光耀研究室 | 极限量态与自旋电子学</span>
+        <div class="lang-en">
+            <p class="subtitle">Topological Magnetism & Spintronics</p>
+        </div>
+        <div class="lang-zh">
+            <p class="subtitle" style="font-family: 'Microsoft YaHei', sans-serif;">极限量态与自旋电子学 | 姚光研究室</p>
+        </div>
     </header>
 
-    <!-- NEWS SECTION -->
-    <section id="news" class="section-container">
-        <h2 class="section-title">News</h2>
-        <ul class="news-list">
-            <li>
-                <div class="news-date">2026.07.28</div>
-                <div class="news-content">
-                    Yao Lab is officially launched at the School of Materials, Ningbo Eastern Institute of Technology.
-                    <span class="zh">姚光研究室在宁波东方理工大学材料学院正式成立。</span>
+    <!-- PI INTRODUCTION SECTION -->
+    <section class="section-container">
+        <div class="member-grid">
+            <div class="member-card">
+                <div class="member-photo">
+                    <!-- 【如何插入头像】
+                         1. 把你的照片重命名为 profile.jpg
+                         2. 在 GitHub 里上传这张照片（和 index.html 放在同一个文件夹）
+                         3. 解除下面这行代码的注释（删掉 <!-- 和 --！> 符号），将图片路径填入 src 中 -->
+                     <img src="profile.jpg" alt="Dr. Guang Yao"> 
+                    <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#999; text-align:center; font-size:0.9em;">
+                        Photo<br>(120x150)
+                    </div>
                 </div>
-            </li>
-            <li>
-                <div class="news-date">2026.07.15</div>
-                <div class="news-content">
-                    Paper "Confined antiskyrmion motion driven by electric current excitations" has been published.
-                    <span class="zh">论文“电流激发驱动的受限反斯格明子运动”正式发表。</span>
+                <div class="member-info">
+                    <h3 class="lang-en">Prof. Yao GUANG</h3>
+                    <h3 class="lang-zh">光 耀 副教授</h3>
+                    
+                    <div class="role lang-en">Principal Investigator / Associate Professor</div>
+                    <div class="role lang-zh">课题组长 / 副教授、博导</div>
+                    
+                    <div class="lang-en">
+                        <p style="font-size: 0.9em; color: #666;">Email: yaoguang(at)itech.edu.cn</p>
+                    </div>
+                    <div class="lang-zh">
+                        <p style="font-size: 0.9em; color: #666;">邮箱: yaoguang(at)eitech.edu.cn</p>
+                    </div>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </section>
 
     <!-- RESEARCH SECTION -->
     <section id="research" class="bg-beige">
         <div class="section-container">
-            <h2 class="section-title">Research</h2>
+            <h2 class="section-title lang-en">Field of Research</h2>
+            <h2 class="section-title lang-zh">研究方向</h2>
             
             <div class="research-card">
                 <div class="research-text">
-                    <h3>Neuromorphic Computing via Spintronics</h3>
-                    <p>We leverage voltage-tunable spin-torque ferromagnetic resonance (ST-FMR) in artificial skyrmion lattices to develop highly efficient hardware for neuromorphic computing.</p>
-                    <span class="zh">基于自旋电子学的神经形态计算：利用人工斯格明子晶格中的电压可调自旋矩铁磁共振现象，开发高能效的类脑计算硬件。</span>
+                    <div class="lang-en">
+                        <h3>Room-Temperature Topological Spin Textures</h3>
+                        <p>Study of room-temperature topological spin textures and their applications in advanced functional spintronic devices, aiming for next-generation memory and logic technologies.</p>
+                    </div>
+                    <div class="lang-zh">
+                        <h3>室温拓扑自旋结构</h3>
+                        <p>致力于室温拓扑自旋结构（如斯格明子）的基础研究及其在先进功能性自旋电子器件中的应用，为下一代存储与逻辑技术提供支持。</p>
+                    </div>
                 </div>
-                <div class="research-image">[ Research Image Placeholder 1 ]</div>
+                <div class="research-image">
+                    <!-- 【如何插入研究配图】
+                         上传图片后，使用： <img src="research1.jpg" alt="Research 1"> 替换下方的文字 -->
+                    <span style="color:#999;"><img src="research1.jpg" alt="Research 1"></span>
+                </div>
             </div>
 
             <div class="research-card">
                 <div class="research-text">
-                    <h3>Topological Spin Textures & Dynamics</h3>
-                    <p>Focusing on the creation, manipulation, and high-frequency dynamics of non-trivial spin textures, including skyrmions and antiskyrmions driven by electrical currents.</p>
-                    <span class="zh">拓扑自旋结构与动力学：致力于探索电流驱动下的斯格明子、反斯格明子等非平庸自旋结构的生成、调控及高频动力学行为。</span>
+                    <div class="lang-en">
+                        <h3>2D Magnetic Materials & Transport</h3>
+                        <p>Research on spin transport related physics based on magnetic two-dimensional materials and the development of novel neuromorphic and spintronic devices.</p>
+                    </div>
+                    <div class="lang-zh">
+                        <h3>二维磁性材料与量子输运</h3>
+                        <p>基于磁性二维材料的自旋输运物理研究，以及新型类脑神经形态计算器件和自旋电子器件的开发。</p>
+                    </div>
                 </div>
-                <div class="research-image">[ Research Image Placeholder 2 ]</div>
+                <div class="research-image">
+                    <span style="color:#999;"><img src="research2.jpg" alt="Research 2"></span>
+                </div>
             </div>
 
             <div class="research-card">
                 <div class="research-text">
-                    <h3>Advanced Micromagnetic Simulation</h3>
-                    <p>Integrating Mumax3 simulations with precision measurements (Keithley switch matrices & SRS lock-in amplifiers) to uncover the underlying mechanisms of emergent topological states.</p>
-                    <span class="zh">先进微磁模拟与精密测量：结合 Mumax3 模拟与高精度仪器测量，揭示自旋演生的底层物理机制。</span>
+                    <div class="lang-en">
+                        <h3>Real-Space Observation & Spin Dynamics</h3>
+                        <p>Real-space observation of spin texture dynamics using advanced imaging (LTEM), combined with in-situ transport measurements to uncover the physical origins of emergent phenomena.</p>
+                    </div>
+                    <div class="lang-zh">
+                        <h3>实空间观测与自旋动力学</h3>
+                        <p>利用洛伦兹透射电镜（LTEM）对自旋结构的动力学行为进行实空间观测，并结合原位输运测量，揭示衍生量子现象的物理起源。</p>
+                    </div>
                 </div>
-                <div class="research-image">[ Research Image Placeholder 3 ]</div>
+                <div class="research-image">
+                    <span style="color:#999;"><img src="research3.jpg" alt="Research 3"></span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- MEMBERS SECTION -->
-    <section id="members" class="section-container">
-        <h2 class="section-title">Members</h2>
-        <div class="member-grid">
-            
-            <!-- PI Card -->
-            <div class="member-card">
-                <div class="member-photo">
-                    <!-- <img src="your-photo.jpg" alt="Guang Yao" style="width:100%; height:100%; object-fit:cover;"> -->
+    <!-- CAREER & EDUCATION SECTION -->
+    <section id="career" class="section-container">
+        <h2 class="section-title lang-en">Education & Employment</h2>
+        <h2 class="section-title lang-zh">教育与工作履历</h2>
+
+        <!-- EIT -->
+        <div class="list-row">
+            <div class="list-left">2026.08 – Present</div>
+            <div class="list-right">
+                <div class="lang-en">
+                    <strong>Ningbo Eastern Institute of Technology (EIT), China</strong><br>
+                    Associate Professor, School of Materials
                 </div>
-                <div class="member-info">
-                    <h3>Guang Yao</h3>
-                    <div class="role">Principal Investigator</div>
-                    <span class="zh">光耀 | 课题组长、副教授、博导</span>
-                    <p style="font-size: 0.85em; margin-top: 10px;">yaoguang(at)eitech.edu.cn</p>
+                <div class="lang-zh">
+                    <strong>宁波东方理工大学 (EIT)</strong><br>
+                    工学部-材料科学与技术学院 | 副教授、博导
                 </div>
             </div>
-            
+        </div>
+        
+        <!-- CNRS -->
+        <div class="list-row">
+            <div class="list-left">2025.08 – 2026.07</div>
+            <div class="list-right">
+                <div class="lang-en">
+                    <strong>CNRS, Laboratoire Albert Fert, France</strong><br>
+                    Postdoctoral Researcher
+                </div>
+                <div class="lang-zh">
+                    <strong>法国国家科学研究中心 (CNRS) - 诺贝尔物理奖得主实验室</strong><br>
+                    博士后研究员
+                </div>
+            </div>
+        </div>
+
+        <!-- RIKEN -->
+        <div class="list-row">
+            <div class="list-left">2021.10 – 2025.07</div>
+            <div class="list-right">
+                <div class="lang-en">
+                    <strong>RIKEN, Center for Emergent Matter Science, Japan</strong><br>
+                    Postdoctoral Researcher
+                </div>
+                <div class="lang-zh">
+                    <strong>日本理化学研究所 (RIKEN) - 创发物性科学研究中心</strong><br>
+                    博士后研究员
+                </div>
+            </div>
+        </div>
+        
+        <!-- Visiting -->
+        <div class="list-row">
+            <div class="list-left">2018.10 – 2021.10</div>
+            <div class="list-right">
+                <div class="lang-en">
+                    <strong>Visiting Positions</strong><br>
+                    Songshan Lake Materials Laboratory, China (Visiting Scientist)<br>
+                    KAUST, Saudi Arabia (Visiting Student)
+                </div>
+                <div class="lang-zh">
+                    <strong>访问学者经历</strong><br>
+                    松山湖材料实验室 (访问科学家) | 沙特国王科技大学 KAUST (访问学生)
+                </div>
+            </div>
+        </div>
+
+        <!-- UCAS -->
+        <div class="list-row">
+            <div class="list-left">2016.09 – 2021.06</div>
+            <div class="list-right">
+                <div class="lang-en">
+                    <strong>Institute of Physics, Chinese Academy of Sciences (IOP,CAS)</strong><br>
+                    Ph.D. in Condensed Matter Physics
+                </div>
+                <div class="lang-zh">
+                    <strong>中国科学院物理研究所 (IOP,CAS)</strong><br>
+                    凝聚态物理 | 博士学位
+                </div>
+            </div>
+        </div>
+
+        <!-- Sichuan Univ -->
+        <div class="list-row">
+            <div class="list-left">2012.09 – 2016.06</div>
+            <div class="list-right">
+                <div class="lang-en">
+                    <strong>Sichuan University, China</strong><br>
+                    B.S. in Physics
+                </div>
+                <div class="lang-zh">
+                    <strong>四川大学</strong><br>
+                    物理学 | 学士学位
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- CAREER SECTION -->
-    <section class="bg-beige">
+    <!-- PUBLICATIONS SECTION -->
+    <section id="publications" class="bg-beige">
         <div class="section-container">
-            <h2 class="section-title">Education & Career</h2>
-            <ul class="career-list">
+            <h2 class="section-title lang-en">Selected Publications</h2>
+            <h2 class="section-title lang-zh">代表性论文</h2>
+            <ul class="pub-list">
                 <li>
-                    <div class="career-year">2026.07 – Present</div>
-                    <div class="career-desc">
-                        Associate Professor, School of Materials, Ningbo Eastern Institute of Technology
-                        <span class="zh">宁波东方理工大学 材料学院 | 副教授、博导</span>
-                    </div>
+                    <span class="pub-title">Confined antiskyrmion motion driven by electric current excitations.</span><br>
+                    <u>Yao Guang</u>, X. Zhang, Y. Liu, L. Peng, F. S. Yasin, K. Karube, D. Nakamura, N. Nagaosa, Y. Taguchi, M. Mochizuki, Y. Tokura, and X. Yu.<br>
+                    <span class="pub-journal">Nature Communications</span>, 15: 7701 (2024).
                 </li>
                 <li>
-                    <div class="career-year">2021.06 – 2026.07</div>
-                    <div class="career-desc">
-                        Postdoctoral Researcher (CNRS, France / RIKEN, Japan / Saudi Arabia)
-                        <span class="zh">博士后研究员 | 法国国家科学研究中心、日本理化学研究所、沙特</span>
-                    </div>
+                    <span class="pub-title">Topological stability of spin textures in Si/Co-doped helimagnet FeGe.</span><br>
+                    <u>Yao Guang</u>, Y. Fujishiro, A. Tanaka, L. Peng, Y. Kaneko, N. Kanazawa, Y. Tokura and X. Yu.<br>
+                    <span class="pub-journal">Journal of Physics: Materials</span>, 7: 025009 (2024).
                 </li>
                 <li>
-                    <div class="career-year">2016.09 – 2021.06</div>
-                    <div class="career-desc">
-                        Ph.D. in Condensed Matter Physics
-                        <span class="zh">凝聚态物理 博士学位</span>
-                    </div>
+                    <span class="pub-title">Electrical detection of magnetic skyrmions in a magnetic tunnel junction.</span><br>
+                    <u>Yao Guang</u>, L. Zhang, J. Zhang, et al.<br>
+                    <span class="pub-journal">Advanced Electronic Materials</span>, 9: 2200570 (2023).
+                </li>
+                <li>
+                    <span class="pub-title">Superposition of emergent monopole and antimonopole in CoTb thin films.</span><br>
+                    <u>Yao Guang</u>, K. Ran, J. Zhang, et al.<br>
+                    <span class="pub-journal">Physical Review Letters</span>, 127: 217201 (2021).
+                </li>
+                <li>
+                    <span class="pub-title">Creating zero-field skyrmions in exchange-biased multilayers through X-ray illumination.</span><br>
+                    <u>Yao Guang</u>, I. Bykova, Y. Liu, et al.<br>
+                    <span class="pub-journal">Nature Communications</span>, 11: 949 (2020).
                 </li>
             </ul>
         </div>
     </section>
 
-    <!-- PUBLICATIONS SECTION -->
-    <section id="publications" class="section-container">
-        <h2 class="section-title">Selected Publications</h2>
-        <ul class="pub-list">
-            <li>
-                <span class="title">"Confined antiskyrmion motion driven by electric current excitations"</span><br>
-                G. Yao, et al.<br>
-                <span class="journal">Journal Name</span>, Vol, Page (2026)
-            </li>
-            <!-- Add more publications here -->
-            <li>
-                <span class="title">"Voltage-Tunable Spin-Torque Resonance in Artificial Skyrmion Lattices for Neuromorphic Computing"</span><br>
-                G. Yao, et al.<br>
-                <span class="journal">Conference Presentation / Pre-print</span> (2026)
-            </li>
-        </ul>
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section-container">
+        <h2 class="section-title lang-en">Skills & Awards</h2>
+        <h2 class="section-title lang-zh">实验技能与荣誉奖项</h2>
+        
+        <div class="list-row">
+            <div class="list-left lang-en">Thin Film Deposition</div>
+            <div class="list-left lang-zh">薄膜沉积技术</div>
+            <div class="list-right skills-tags">
+                <span>Magnetron Sputtering</span><span>Thermal Evaporation</span><span>ICPECVD</span><span>ALD</span><span>Electron Beam Evaporation</span>
+            </div>
+        </div>
+
+        <div class="list-row">
+            <div class="list-left lang-en">Characterization</div>
+            <div class="list-left lang-zh">材料与器件表征</div>
+            <div class="list-right skills-tags">
+                <span>LTEM / TEM</span><span>SEM</span><span>AFM / MFM</span><span>VSM</span><span>PPMS</span><span>MOKE</span><span>Lock-in Amplifiers</span>
+            </div>
+        </div>
+
+        <div class="list-row">
+            <div class="list-left lang-en">Nanofabrication</div>
+            <div class="list-left lang-zh">微纳加工</div>
+            <div class="list-right skills-tags">
+                <span>UV Lithography</span><span>E-Beam Lithography (EBL)</span><span>FIB</span><span>Ar-ion Etching</span><span>RIE</span>
+            </div>
+        </div>
+
+        <div class="list-row">
+            <div class="list-left lang-en">Programming</div>
+            <div class="list-left lang-zh">计算与编程</div>
+            <div class="list-right skills-tags">
+                <span>Python</span><span>Mumax3</span><span>Matlab</span><span>Mathematica</span><span>LabVIEW</span>
+            </div>
+        </div>
+
+        <div class="list-row" style="margin-top: 30px;">
+            <div class="list-left lang-en">Selected Awards</div>
+            <div class="list-left lang-zh">代表性荣誉</div>
+            <div class="list-right">
+                <div class="lang-en">
+                    <strong>President's Award for Outstanding Achievement</strong>, Chinese Academy of Sciences (2021)<br>
+                    <strong>Director's scholarship of special excellence award</strong>, Institute of Physics, CAS (2020)
+                </div>
+                <div class="lang-zh">
+                    <strong>中国科学院院长优秀奖</strong> (2021)<br>
+                    <strong>中国科学院物理研究所所长特别优秀奖</strong> (2020)
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
         <div class="footer-container">
             <div class="footer-col">
-                <h4>Ningbo Eastern Institute of Technology</h4>
-                <p>School of Materials</p>
-                <p>Ningbo, Zhejiang Province, China</p>
-                <p class="zh">浙江省宁波市 东方理工大学 材料学院</p>
+                <h4 class="lang-en">Ningbo Eastern Institute of Technology</h4>
+                <h4 class="lang-zh">宁波东方理工大学</h4>
+                
+                <p class="lang-en">School of Materials</p>
+                <p class="lang-zh">材料学院</p>
+                
+                <p class="lang-en">Ningbo, Zhejiang Province, China</p>
+                <p class="lang-zh">中国 浙江省 宁波市</p>
             </div>
             <div class="footer-col">
-                <h4>Contact</h4>
-                <p>Email: gyao(at)eitech.edu.cn</p>
+                <h4 class="lang-en">Contact</h4>
+                <h4 class="lang-zh">联系方式</h4>
+                <p>Email: yaoguang(at)eitech.edu.cn</p>
             </div>
         </div>
         <div class="copyright">
-            &copy; 2026 Yao Lab, Ningbo Eastern Institute of Technology. All rights reserved.
+            &copy; 2026 Yao Lab. All rights reserved.
         </div>
     </footer>
 
+    <!-- 语言切换脚本 -->
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const btn = document.getElementById('lang-btn');
+            
+            // 如果当前是英文，切换为中文
+            if (body.classList.contains('show-en')) {
+                body.classList.replace('show-en', 'show-zh');
+                btn.innerText = 'English';
+            } 
+            // 如果当前是中文，切换为英文
+            else {
+                body.classList.replace('show-zh', 'show-en');
+                btn.innerText = '中 文';
+            }
+        }
+    </script>
 </body>
 </html>

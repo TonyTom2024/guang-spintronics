@@ -5,46 +5,222 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yao Lab | Topological Magnetism & Spintronics</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 850px; margin: 0 auto; padding: 40px 20px; }
-        header { border-bottom: 2px solid #0056b3; padding-bottom: 20px; margin-bottom: 30px; }
-        h1 { color: #0056b3; font-size: 2.5em; margin-bottom: 5px; }
-        .subtitle { font-size: 1.2em; color: #666; margin-top: 0; }
-        h2 { color: #222; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 40px; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
-        .footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.9em; color: #777; text-align: center; }
+        /* 基础样式重置 */
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; list-style: none; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; background-color: #fff; }
+        .zh { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 0.9em; color: #666; margin-top: 4px; display: block; }
+        
+        /* 导航栏 */
+        nav { background-color: #051024; padding: 15px 0; text-align: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        nav a { color: #fff; text-decoration: none; margin: 0 20px; font-size: 0.95em; letter-spacing: 1px; transition: color 0.3s; }
+        nav a:hover { color: #a0bcdc; }
+
+        /* 顶部 Hero 区域 */
+        .hero { background: linear-gradient(135deg, #051024 0%, #1a365d 100%); color: #fff; text-align: center; padding: 120px 20px; }
+        .hero h1 { font-family: 'Georgia', serif; font-size: 3.5em; font-weight: normal; letter-spacing: 2px; margin-bottom: 10px; }
+        .hero .subtitle { font-size: 1.2em; font-weight: 300; letter-spacing: 1px; margin-bottom: 30px; opacity: 0.9; }
+        .hero .zh-title { font-size: 1.2em; opacity: 0.7; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;}
+
+        /* 通用区块布局 */
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 80px 20px; }
+        .bg-beige { background-color: #fcfbf9; } /* 模仿原网页的米色背景 */
+        .section-title { font-family: 'Georgia', serif; font-size: 1.8em; font-weight: normal; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; color: #111; text-align: center; }
+        .section-title::after { content: ''; display: block; width: 40px; height: 2px; background-color: #1a365d; margin: 15px auto 0; }
+
+        /* 新闻区域 (News) */
+        .news-list li { border-bottom: 1px solid #eee; padding: 20px 0; display: flex; }
+        .news-date { font-weight: bold; width: 120px; color: #1a365d; flex-shrink: 0; }
+        .news-content { flex-grow: 1; }
+
+        /* 研究区域 (Research) */
+        .research-card { display: flex; align-items: center; margin-bottom: 60px; gap: 40px; }
+        .research-card:nth-child(even) { flex-direction: row-reverse; }
+        .research-text { flex: 1; }
+        .research-text h3 { font-family: 'Georgia', serif; font-size: 1.5em; margin-bottom: 10px; color: #1a365d; }
+        .research-image { flex: 1; height: 260px; background-color: #e9ecef; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #999; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+        /* 成员区域 (Members) */
+        .member-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .member-card { display: flex; background: #fff; padding: 20px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; }
+        .member-photo { width: 100px; height: 120px; background-color: #e9ecef; margin-right: 20px; object-fit: cover; }
+        .member-info h3 { font-family: 'Georgia', serif; margin-bottom: 5px; color: #111; }
+        .member-info .role { font-size: 0.9em; color: #1a365d; font-weight: bold; margin-bottom: 10px; }
+
+        /* 论文与履历区域 (Publications & Career) */
+        .pub-list li, .career-list li { margin-bottom: 25px; }
+        .pub-list .title { font-weight: bold; color: #111; }
+        .pub-list .journal { font-style: italic; color: #1a365d; }
+        
+        .career-list li { display: flex; }
+        .career-year { width: 150px; font-weight: bold; color: #1a365d; flex-shrink: 0; }
+        .career-desc { flex-grow: 1; }
+
+        /* 底部信息 (Footer) */
+        footer { background-color: #051024; color: #fff; padding: 60px 20px; font-size: 0.9em; }
+        .footer-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
+        .footer-col h4 { font-family: 'Georgia', serif; font-size: 1.2em; margin-bottom: 20px; letter-spacing: 1px; }
+        .footer-col p { opacity: 0.8; margin-bottom: 10px; }
+        .copyright { text-align: center; opacity: 0.5; margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
     </style>
 </head>
 <body>
-    <header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#news">News</a>
+        <a href="#research">Research</a>
+        <a href="#members">Members</a>
+        <a href="#publications">Publications</a>
+    </nav>
+
+    <header id="home" class="hero">
         <h1>Yao Lab</h1>
         <p class="subtitle">Topological Magnetism & Spintronics</p>
-        <p>School of Materials, Ningbo Eastern Institute of Technology</p>
+        <span class="zh-title">光耀研究室 | 极限量态与自旋电子学</span>
     </header>
 
-    <section>
-        <h2>Welcome to Our Group</h2>
-        <p>We investigate topological magnetism, novel spin textures, and their integration into next-generation spintronic devices. By combining advanced micromagnetic simulations with precision laboratory measurements, we explore emergent states towards energy-efficient neuromorphic computing.</p>
-    </section>
-
-    <section>
-        <h2>Current Research Themes</h2>
-        <ul>
-            <li><strong>Neuromorphic Computing:</strong> Utilizing spintronic devices for hardware-based artificial intelligence.</li>
-            <li><strong>Artificial Skyrmion Lattices:</strong> Voltage-tunable spin-torque resonance and dynamics.</li>
-            <li><strong>Topological Spin Textures:</strong> Confined antiskyrmion motion driven by electric current excitations.</li>
-            <li><strong>Advanced Simulations & Measurements:</strong> Multiscale modeling (Mumax3) alongside precision lock-in amplifier and switch matrix techniques.</li>
+    <!-- NEWS SECTION -->
+    <section id="news" class="section-container">
+        <h2 class="section-title">News</h2>
+        <ul class="news-list">
+            <li>
+                <div class="news-date">2026.07.28</div>
+                <div class="news-content">
+                    Yao Lab is officially launched at the School of Materials, Ningbo Eastern Institute of Technology.
+                    <span class="zh">姚光研究室在宁波东方理工大学材料学院正式成立。</span>
+                </div>
+            </li>
+            <li>
+                <div class="news-date">2026.07.15</div>
+                <div class="news-content">
+                    Paper "Confined antiskyrmion motion driven by electric current excitations" has been published.
+                    <span class="zh">论文“电流激发驱动的受限反斯格明子运动”正式发表。</span>
+                </div>
+            </li>
         </ul>
     </section>
 
-    <section>
-        <h2>Principal Investigator</h2>
-        <p><strong>Dr. Guang Yao</strong></p>
-        <p>Dr. Yao received his Ph.D. in condensed matter physics in June 2021. Prior to establishing his independent research group at the Ningbo Eastern Institute of Technology in 2026, he accumulated extensive research experience as a postdoctoral fellow at RIKEN (Japan), CNRS (France), and within Saudi Arabia.</p>
+    <!-- RESEARCH SECTION -->
+    <section id="research" class="bg-beige">
+        <div class="section-container">
+            <h2 class="section-title">Research</h2>
+            
+            <div class="research-card">
+                <div class="research-text">
+                    <h3>Neuromorphic Computing via Spintronics</h3>
+                    <p>We leverage voltage-tunable spin-torque ferromagnetic resonance (ST-FMR) in artificial skyrmion lattices to develop highly efficient hardware for neuromorphic computing.</p>
+                    <span class="zh">基于自旋电子学的神经形态计算：利用人工斯格明子晶格中的电压可调自旋矩铁磁共振现象，开发高能效的类脑计算硬件。</span>
+                </div>
+                <div class="research-image">[ Research Image Placeholder 1 ]</div>
+            </div>
+
+            <div class="research-card">
+                <div class="research-text">
+                    <h3>Topological Spin Textures & Dynamics</h3>
+                    <p>Focusing on the creation, manipulation, and high-frequency dynamics of non-trivial spin textures, including skyrmions and antiskyrmions driven by electrical currents.</p>
+                    <span class="zh">拓扑自旋结构与动力学：致力于探索电流驱动下的斯格明子、反斯格明子等非平庸自旋结构的生成、调控及高频动力学行为。</span>
+                </div>
+                <div class="research-image">[ Research Image Placeholder 2 ]</div>
+            </div>
+
+            <div class="research-card">
+                <div class="research-text">
+                    <h3>Advanced Micromagnetic Simulation</h3>
+                    <p>Integrating Mumax3 simulations with precision measurements (Keithley switch matrices & SRS lock-in amplifiers) to uncover the underlying mechanisms of emergent topological states.</p>
+                    <span class="zh">先进微磁模拟与精密测量：结合 Mumax3 模拟与高精度仪器测量，揭示自旋演生的底层物理机制。</span>
+                </div>
+                <div class="research-image">[ Research Image Placeholder 3 ]</div>
+            </div>
+        </div>
     </section>
 
-    <div class="footer">
-        &copy; 2026 Yao Lab. All rights reserved.
-    </div>
+    <!-- MEMBERS SECTION -->
+    <section id="members" class="section-container">
+        <h2 class="section-title">Members</h2>
+        <div class="member-grid">
+            
+            <!-- PI Card -->
+            <div class="member-card">
+                <div class="member-photo">
+                    <!-- <img src="your-photo.jpg" alt="Guang Yao" style="width:100%; height:100%; object-fit:cover;"> -->
+                </div>
+                <div class="member-info">
+                    <h3>Guang Yao</h3>
+                    <div class="role">Principal Investigator</div>
+                    <span class="zh">光耀 | 课题组长、副教授、博导</span>
+                    <p style="font-size: 0.85em; margin-top: 10px;">yaoguang(at)eitech.edu.cn</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- CAREER SECTION -->
+    <section class="bg-beige">
+        <div class="section-container">
+            <h2 class="section-title">Education & Career</h2>
+            <ul class="career-list">
+                <li>
+                    <div class="career-year">2026.07 – Present</div>
+                    <div class="career-desc">
+                        Associate Professor, School of Materials, Ningbo Eastern Institute of Technology
+                        <span class="zh">宁波东方理工大学 材料学院 | 副教授、博导</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="career-year">2021.06 – 2026.07</div>
+                    <div class="career-desc">
+                        Postdoctoral Researcher (CNRS, France / RIKEN, Japan / Saudi Arabia)
+                        <span class="zh">博士后研究员 | 法国国家科学研究中心、日本理化学研究所、沙特</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="career-year">2016.09 – 2021.06</div>
+                    <div class="career-desc">
+                        Ph.D. in Condensed Matter Physics
+                        <span class="zh">凝聚态物理 博士学位</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PUBLICATIONS SECTION -->
+    <section id="publications" class="section-container">
+        <h2 class="section-title">Selected Publications</h2>
+        <ul class="pub-list">
+            <li>
+                <span class="title">"Confined antiskyrmion motion driven by electric current excitations"</span><br>
+                G. Yao, et al.<br>
+                <span class="journal">Journal Name</span>, Vol, Page (2026)
+            </li>
+            <!-- Add more publications here -->
+            <li>
+                <span class="title">"Voltage-Tunable Spin-Torque Resonance in Artificial Skyrmion Lattices for Neuromorphic Computing"</span><br>
+                G. Yao, et al.<br>
+                <span class="journal">Conference Presentation / Pre-print</span> (2026)
+            </li>
+        </ul>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>Ningbo Eastern Institute of Technology</h4>
+                <p>School of Materials</p>
+                <p>Ningbo, Zhejiang Province, China</p>
+                <p class="zh">浙江省宁波市 东方理工大学 材料学院</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>Email: gyao(at)eitech.edu.cn</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Yao Lab, Ningbo Eastern Institute of Technology. All rights reserved.
+        </div>
+    </footer>
+
 </body>
 </html>

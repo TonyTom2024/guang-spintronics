@@ -255,6 +255,14 @@
         .research-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         /* ================= 列表区域 (Career, Skills) ================= */
+		/* ================= 履历具体项目描述样式 ================= */
+        .timeline-desc {
+            margin-top: 6px;
+            font-size: 0.9em;
+            color: #777;
+            line-height: 1.6;
+            font-family: var(--font-sans); /* 确保使用无衬线体保持现代感 */
+        }
         .timeline-row { 
             display: flex; 
             margin-bottom: 40px; 
@@ -337,7 +345,7 @@
     <nav>
         <div class="nav-logo">
             <div class="logo-title">Guang Lab</div>
-            <div class="logo-subtitle lang-en">Eastern Institute of Technology</div>
+            <div class="logo-subtitle lang-en">Eastern Institute of Technology (EIT)</div>
             <div class="logo-subtitle lang-zh">宁波东方理工大学</div>
         </div>
 
@@ -392,11 +400,18 @@
                     </div>
                     
                     <div class="lang-en">
-                        <p>Welcome to the Guang Lab at the Eastern Institute of Technology. Our group focuses on the exciting frontiers of condensed matter physics and materials science, particularly in topological magnetism and advanced spintronic devices.</p>
+                        <p>
+						Welcome to the Guang Lab at the Eastern Institute of Technology.
+						The next leap in artificial intelligence and low-power technologies relies on mastering the fundamental degrees of freedom of electrons. Our group operates at the exciting frontiers of condensed matter physics and materials science, with a passionate focus on topological magnetism and advanced spintronic devices. 
+						By engineering room-temperature topological spin textures—such as skyrmions and antiskyrmions—we seek to drive magnetic materials into entirely new functional states. Exploiting their non-linear dynamics and ultra-low energy consumption, we aim to translate the exotic physics of 2D magnets and spin-orbit torques into revolutionary neuromorphic computing architectures. Ultimately, we are building the hardware foundation required to deploy brain-inspired intelligence and energy-efficient edge computing applications in future tech.  
+						We invite passionate researchers and students to join our quest in exploring these emergent topological states and shaping the future of information technology.</p>
                         <p style="margin-top: 15px;"><strong>Email:</strong> yaoguang(at)eitech.edu.cn</p>
                     </div>
                     <div class="lang-zh">
-                        <p>欢迎访问宁波东方理工大学光耀课题组。本研究团队致力于凝聚态物理与材料科学的前沿交叉领域，重点探索拓扑磁性结构（如斯格明子）及其在先进自旋电子器件中的应用。</p>
+                        <p>欢迎访问宁波东方理工大学光耀课题组。
+						人工智能与低功耗技术的下一次飞跃，有赖于对电子基本自由度的精准掌控。我们团队深耕于凝聚态物理与材料科学的前沿交叉领域，倾注热情聚焦于拓扑磁学与先进自旋电子器件。
+						通过对室温拓扑自旋结构（如斯格明子和反斯格明子）的工程化设计与调控，我们旨在驱动磁性材料进入全新的功能态。利用其非线性动力学特性与超低能耗优势，我们的目标是将二维磁体与自旋轨道矩的前沿物理机制，转化为革命性的类脑计算架构。最终，我们将为在未来科技中部署类脑智能与高能效的边缘计算应用，构筑坚实的底层硬件基础。
+						我们诚邀充满热情的科研人员与青年学子加入我们，共同探索这些前沿的衍生拓扑态，塑造信息技术的未来。</p>
                         <p style="margin-top: 15px;"><strong>邮箱:</strong> yaoguang(at)eitech.edu.cn</p>
                     </div>
                 </div>
@@ -501,72 +516,113 @@
             <h2 class="section-title lang-en">Education & Career</h2>
             <h2 class="section-title lang-zh">教育与工作履历</h2>
 
+            <!-- EIT -->
             <div class="timeline-row">
-                <div class="timeline-left">2026.08 – Present</div>
+                <div class="timeline-left">2026.08 – Now </div>
                 <div class="timeline-right">
                     <div class="lang-en">
-                        <strong>Ningbo Eastern Institute of Technology (EIT), China</strong>
-                        <p>Associate Professor, School of Materials</p>
+                        Ningbo Eastern Institute of Technology (EIT), China, College of Engineering, Materials Science and Technology, <strong>Associate Professor</strong>
+                        <div class="timeline-desc">— Neuromorphic computing with topological spintronics.</div>
                     </div>
                     <div class="lang-zh">
-                        <strong>宁波东方理工大学 (EIT)</strong>
-                        <p>工学部-材料科学与技术学院 | 副教授、博导</p>
+                        宁波东方理工大学 (EIT)，工学部-材料科学与技术学院，<strong>副教授、博导</strong>
+                        <div class="timeline-desc">— 基于拓扑自旋电子学的类脑计算。</div>
                     </div>
                 </div>
             </div>
             
+            <!-- CNRS -->
             <div class="timeline-row">
                 <div class="timeline-left">2025.08 – 2026.07</div>
                 <div class="timeline-right">
                     <div class="lang-en">
-                        <strong>CNRS, Laboratoire Albert Fert, France</strong>
-                        <p>Postdoctoral Researcher</p>
+                        CNRS, Laboratoire Albert Fert, France, <strong>Postdoctoral Researcher</strong>
+                        <div class="timeline-desc">— Neuromorphic computing with functional spin texture devices.</div>
+						<div class="timeline-desc">Collaborating Supervisor: <strong>Prof. Julie GROLLIER (CNRS,France)</strong></div>
                     </div>
                     <div class="lang-zh">
-                        <strong>法国国家科学研究中心 (CNRS) - 诺贝尔物理奖得主实验室</strong>
-                        <p>博士后研究员</p>
+                        法国国家科学研究中心 (CNRS) - 诺贝尔物理奖得主实验室，<strong>博士后研究员</strong>
+                        <div class="timeline-desc">— 基于功能性自旋结构器件的类脑计算。</div>
+						<div class="timeline-desc">合作导师：<strong>Prof. Julie GROLLIER (CNRS,France)</strong></div>
                     </div>
                 </div>
             </div>
 
+            <!-- RIKEN -->
             <div class="timeline-row">
                 <div class="timeline-left">2021.10 – 2025.07</div>
                 <div class="timeline-right">
                     <div class="lang-en">
-                        <strong>RIKEN, Center for Emergent Matter Science, Japan</strong>
-                        <p>Postdoctoral Researcher</p>
+                        RIKEN Center for Emergent Matter Science, Japan, <strong>Postdoctoral Researcher</strong>
+                        <div class="timeline-desc">— Real-space observations of novel spin textures dynamics and related transport properties in magnetic materials.</div>
+						<div class="timeline-desc">Collaborating Supervisor: <strong>Prof. Xiuzhen Yu (RIKEN,Japan)</strong> & <strong>Prof. Yoshinori Tokura (RIKEN,Japan) </strong></div>
                     </div>
                     <div class="lang-zh">
-                        <strong>日本理化学研究所 (RIKEN) - 创发物性科学研究中心</strong>
-                        <p>博士后研究员</p>
+                        日本理化学研究所 (RIKEN) - 创发物性科学研究中心，<strong>博士后研究员</strong>
+                        <div class="timeline-desc">— 磁性材料中新型自旋结构动力学及相关输运特性的实空间观测。</div>
+						<div class="timeline-desc">合作导师: <strong>Prof. Xiuzhen Yu (RIKEN,Japan)</strong> & <strong>Prof. Yoshinori Tokura (RIKEN,Japan) </strong></div>
                     </div>
                 </div>
             </div>
 
+            <!-- Songshan Lake (Visiting) -->
+            <div class="timeline-row">
+                <div class="timeline-left">2021.08 – 2021.10</div>
+                <div class="timeline-right">
+                    <div class="lang-en">
+                        Songshan Lake Materials Laboratory, China, <strong>Visiting Scientist</strong>
+                        <div class="timeline-desc">— Electrical detection of magnetic skyrmions in a magnetic tunneling junction.</div>
+						<div class="timeline-desc">Collaborating Supervisor: <strong>Prof. Guoqiang Yu (IOPCAS,China)</strong></div>
+                    </div>
+                    <div class="lang-zh">
+                        松山湖材料实验室，<strong>客座研究员</strong>
+                        <div class="timeline-desc">— 磁性隧道结中磁斯格明子的电学探测。</div>
+						<div class="timeline-desc">合作导师: <strong>Prof. Guoqiang Yu(IOPCAS,China)</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KAUST (Visiting) -->
+            <div class="timeline-row">
+                <div class="timeline-left">2018.10 – 2019.01</div>
+                <div class="timeline-right">
+                    <div class="lang-en">
+                        King Abdullah University of Science and Technology (KAUST), Saudi Arabia, <strong>Visiting Student</strong>
+                        <div class="timeline-desc">— Real-space observation of engineering zero-field skyrmions in magnetic multilayers.</div>
+						<div class="timeline-desc">Collaborating Supervisor: <strong>Prof. Xixiang Zhang (KAUST,Saudi Arabia)</strong></div>
+                    </div>
+                    <div class="lang-zh">
+                        沙特国王科技大学 (KAUST)，<strong>访问学生</strong>
+                        <div class="timeline-desc">— 磁性多层膜中工程化零场斯格明子的实空间观测。</div>
+						<div class="timeline-desc">合作导师: <strong>Prof. Xixiang Zhang (KAUST,Saudi Arabia)</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UCAS -->
             <div class="timeline-row">
                 <div class="timeline-left">2016.09 – 2021.06</div>
                 <div class="timeline-right">
                     <div class="lang-en">
-                        <strong>Institute of Physics, Chinese Academy of Sciences (IOP, CAS)</strong>
-                        <p>Ph.D. in Condensed Matter Physics</p>
+                        University of Chinese Academy of Sciences (UCAS), China, <strong>Ph.D. in Condensed matter physics</strong>
+                        <div class="timeline-desc">Advisor:<strong> Prof. Guoqiang Yu & Prof. Xiufeng Han</strong></div>
                     </div>
                     <div class="lang-zh">
-                        <strong>中国科学院物理研究所 (IOP, CAS)</strong>
-                        <p>凝聚态物理 | 博士学位</p>
+                        中国科学院大学 (UCAS)，凝聚态物理，<strong>博士学位</strong>
+                        <div class="timeline-desc">导师：<strong>于国强 研究员 & 韩秀峰 研究员<strong></div>
                     </div>
                 </div>
             </div>
 
+            <!-- Sichuan Univ -->
             <div class="timeline-row">
                 <div class="timeline-left">2012.09 – 2016.06</div>
                 <div class="timeline-right">
                     <div class="lang-en">
-                        <strong>Sichuan University, China</strong>
-                        <p>B.S. in Physics</p>
+                        Sichuan University, China, <strong>Bachelor of Science, Physics</strong>
                     </div>
                     <div class="lang-zh">
-                        <strong>四川大学</strong>
-                        <p>物理学 | 学士学位</p>
+                        四川大学，物理学，<strong>学士学位</strong>
                     </div>
                 </div>
             </div>
